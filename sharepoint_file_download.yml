@@ -1,0 +1,16 @@
+---
+- name: Download file from SharePoint
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Download file
+      sharepoint_download:
+        file_url: <sharepoint_file_url>
+        username: <sharepoint_username>
+        password: <sharepoint_password>
+      register: download_result
+
+    - name: Print downloaded file path
+      debug:
+        var: download_result['local_path']
